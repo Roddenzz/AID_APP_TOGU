@@ -1,0 +1,54 @@
+name: Flutter Build CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            flutter-channel: stable
+            build-cmd: "flutter build apk --release"
+          - os: windows-latest
+            flutter-channel: stable
+            build-cmd: "flutter build windows --release"
+          - os: macos-latest
+            flutter-channel: stable
+            build-cmd: "flutter build ios --release"
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.10.0'
+        channel: ${{ matrix.flutter-channel }}
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Run analyzer
+      run: flutter analyze
+
+    - name: Run tests
+      run: flutter test
+
+    - name: Build
+      run: ${{ matrix.build-cmd }}
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: flutter-build-${{ matrix.os }}
+        path: |
+          build/app/outputs/flutter-apk/
+          build/windows/runner/Release/
+          build/ios/

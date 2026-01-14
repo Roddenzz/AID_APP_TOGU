@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "512161913460",
+    "project_id": "profburo-255e8",
+    "storage_bucket": "profburo-255e8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512161913460:android:1fc61f1af8a37099434f21",
+        "android_client_info": {
+          "package_name": "com.example.aid_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3QE7-I6e8PYiMDX6_JBitEnhl0piyuEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

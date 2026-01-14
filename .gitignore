@@ -1,0 +1,14 @@
+# System Folders
+System Volume Information/
+.DS_Store
+
+# IDE and tooling
+.idea/
+.vs/
+*.suo
+*.slnx
+
+# Dart & Flutter
+.dart_tool/
+build/
+pubspec.lock
